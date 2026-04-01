@@ -1,0 +1,45 @@
+{% extends 'clinica/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">🧑‍⚕️ Pacientes</h2>
+    <a href="{% url 'crear_paciente' %}" class="btn btn-primary">+ Nuevo Paciente</a>
+</div>
+
+{% if pacientes %}
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Edad</th>
+                        <th>Fecha Nacimiento</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in pacientes %}
+                    <tr>
+                        <td>{{ p.id }}</td>
+                        <td>{{ p.nombre }}</td>
+                        <td>{{ p.apellido }}</td>
+                        <td>{{ p.edad }}</td>
+                        <td>{{ p.fecha_nacimiento|date:"d/m/Y" }}</td>
+                        <td class="text-center">
+                            <a href="{% url 'editar_paciente' p.id %}" class="btn btn-sm btn-outline-warning me-1">✏️ Editar</a>
+                            <a href="{% url 'eliminar_paciente' p.id %}" class="btn btn-sm btn-outline-danger">🗑️ Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info">No hay pacientes registrados aún. <a href="{% url 'crear_paciente' %}">Registra el primero</a>.</div>
+{% endif %}
+{% endblock %}

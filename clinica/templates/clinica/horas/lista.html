@@ -1,0 +1,47 @@
+{% extends 'clinica/base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold">📅 Horas Médicas</h2>
+    <a href="{% url 'crear_hora' %}" class="btn btn-danger">+ Nueva Hora</a>
+</div>
+
+{% if horas %}
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Paciente</th>
+                        <th>Doctor</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Motivo</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for h in horas %}
+                    <tr>
+                        <td>{{ h.id }}</td>
+                        <td>{{ h.paciente }}</td>
+                        <td>{{ h.doctor }}</td>
+                        <td>{{ h.fecha|date:"d/m/Y" }}</td>
+                        <td>{{ h.hora|time:"H:i" }}</td>
+                        <td>{{ h.motivo|truncatechars:40 }}</td>
+                        <td class="text-center">
+                            <a href="{% url 'editar_hora' h.id %}" class="btn btn-sm btn-outline-warning me-1">✏️ Editar</a>
+                            <a href="{% url 'eliminar_hora' h.id %}" class="btn btn-sm btn-outline-danger">🗑️ Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="alert alert-info">No hay horas médicas agendadas aún. <a href="{% url 'crear_hora' %}">Agenda la primera</a>.</div>
+{% endif %}
+{% endblock %}

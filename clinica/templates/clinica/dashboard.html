@@ -1,0 +1,69 @@
+{% extends 'clinica/base.html' %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h2 class="fw-bold">Panel de Control</h2>
+        <p class="text-muted">Bienvenido, <strong>{{ usuario }}</strong>. Resumen del sistema.</p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Pacientes -->
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center py-4">
+                <div class="display-4 text-primary mb-2">🧑‍⚕️</div>
+                <h1 class="display-5 fw-bold text-primary">{{ pacientes }}</h1>
+                <p class="card-text fs-5 text-muted">Pacientes Registrados</p>
+                <hr>
+                <a href="{% url 'listar_pacientes' %}" class="btn btn-primary btn-sm me-1">Ver Lista</a>
+                <a href="{% url 'crear_paciente' %}" class="btn btn-outline-primary btn-sm">+ Nuevo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctores -->
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center py-4">
+                <div class="display-4 text-success mb-2">👨‍⚕️</div>
+                <h1 class="display-5 fw-bold text-success">{{ doctores }}</h1>
+                <p class="card-text fs-5 text-muted">Doctores Registrados</p>
+                <hr>
+                <a href="{% url 'listar_doctores' %}" class="btn btn-success btn-sm me-1">Ver Lista</a>
+                <a href="{% url 'crear_doctor' %}" class="btn btn-outline-success btn-sm">+ Nuevo</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Horas Médicas -->
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center py-4">
+                <div class="display-4 text-danger mb-2">📅</div>
+                <h1 class="display-5 fw-bold text-danger">{{ horas }}</h1>
+                <p class="card-text fs-5 text-muted">Horas Médicas Agendadas</p>
+                <hr>
+                <a href="{% url 'listar_horas' %}" class="btn btn-danger btn-sm me-1">Ver Lista</a>
+                <a href="{% url 'crear_hora' %}" class="btn btn-outline-danger btn-sm">+ Nueva</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">⚙️ Acceso Rápido</h5>
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <a href="{% url 'crear_paciente' %}" class="btn btn-outline-primary">Registrar Paciente</a>
+                    <a href="{% url 'crear_doctor' %}" class="btn btn-outline-success">Registrar Doctor</a>
+                    <a href="{% url 'crear_hora' %}" class="btn btn-outline-danger">Agendar Hora</a>
+                    <a href="/admin/" class="btn btn-outline-dark">Panel de Administración</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
