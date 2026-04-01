@@ -11,8 +11,6 @@ VitalCare es una aplicación web para la gestión de una clínica médica, desar
 
 La clínica requería un sistema donde personas autenticadas puedan **registrar, consultar, modificar y eliminar** horas clínicas, pacientes y doctores.
 
-![Dashboard VitalCare](file:///C:/Users/Neo/.gemini/antigravity/brain/dc39b06a-8fff-44e2-8a40-a7060c1a38d5/dashboard_view_1775016550335.png)
-
 ---
 
 ## 🎯 Competencias Demostradas
